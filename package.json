@@ -12,13 +12,13 @@
     "type": "git",
     "url": "git+https://github.com/pupungeggang4/Web-OpenRPG.git"
   },
-  "author": "",
+  "author": "pupungeggang4",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pupungeggang4/Web-OpenRPG/issues"
   },
   "homepage": "https://github.com/pupungeggang4/Web-OpenRPG#readme",
-  "description": "",
+  "description": "Open-World RPG Game",
   "dependencies": {
     "electron-compile": "^6.4.4",
     "electron-squirrel-startup": "^1.0.1"
