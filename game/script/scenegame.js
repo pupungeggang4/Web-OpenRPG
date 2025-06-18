@@ -5,6 +5,7 @@ class SceneGame {
 
     static render(game) {
         Render.init(game.ctx)
+        game.field.render(game.ctx)
     }
     
     static keyDown(game, key) {

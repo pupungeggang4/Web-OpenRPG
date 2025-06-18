@@ -1,5 +1,10 @@
 class Game {
     constructor() {
+        this.save = {}
+        this.loadSaveData()
+
+        this.field = new Field()
+
         this.scene = 'title'
         this.state = ''
         this.menu = false
@@ -14,6 +19,23 @@ class Game {
         this.framePrevious = performance.now()
         this.delta = 16
         this.gameLoop = requestAnimationFrame(() => this.loop())
+    }
+
+    loadSaveData() {
+        let save = localStorage.getItem('pupungeggang4:OpenRPG')
+        if (save === null) {
+            localStorage.setItem('pupungeggang4:OpenRPG', JSON.stringify(emptySave))
+        }
+        this.save = JSON.parse(localStorage.getItem('pupungeggang4:OpenRPG'))
+    }
+
+    saveSaveData() {
+        
+    }
+
+    eraseSaveData() {
+        localStorage.setItem('pupungeggang4:OpenRPG', JSON.stringify(emptySave))
+        this.save = JSON.parse(localStorage.getItem('pupungeggang4:OpenRPG'))
     }
 
     loop() {

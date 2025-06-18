@@ -11,6 +11,10 @@ class Render {
         ctx.fillStyle = 'black'
     }
 
+    static renderImageRect(ctx, image, rect, camera) {
+        ctx.drawImage(image, rect.position.x - rect.size.x / 2 - camera.position.x + camera.size.x / 2, rect.position.y - rect.size.y / 2 - camera.position.y + camera.size.y / 2)
+    }
+
     static strokeRectUI(ctx, rect) {
         ctx.strokeRect(rect[0], rect[1], rect[2], rect[3])
     }
