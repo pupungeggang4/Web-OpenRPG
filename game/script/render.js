@@ -11,6 +11,27 @@ class Render {
         ctx.fillStyle = 'black'
     }
 
+    static renderMenu(ctx, game) {
+        ctx.fillStyle = 'white'
+        Render.fillRectUI(ctx, UI.menu.rect)
+        Render.strokeRectUI(ctx, UI.menu.rect)
+        ctx.fillStyle = 'black'
+
+        Render.fillTextUI(ctx, 'Paused', UI.menu.textPaused)
+        Render.strokeRectUI(ctx, UI.menu.buttonResume)
+        Render.fillTextUI(ctx, 'Resume [R]', UI.menu.textResume)
+        Render.strokeRectUI(ctx, UI.menu.buttonSurrender)
+        if (game.state != 'battle') {
+            ctx.fillStyle = 'gray'
+            Render.fillTextUI(ctx, 'Surrender [S]', UI.menu.textSurrender)
+            ctx.fillStyle = 'black'
+        } else {
+            Render.fillTextUI(ctx, 'Surrender [S]', UI.menu.textSurrender)
+        }
+        Render.strokeRectUI(ctx, UI.menu.buttonExit)
+        Render.fillTextUI(ctx, 'Exit [E]', UI.menu.textExit)
+    }
+
     static renderImageRect(ctx, image, rect, camera) {
         ctx.drawImage(image, rect.position.x - rect.size.x / 2 - camera.position.x + camera.size.x / 2, rect.position.y - rect.size.y / 2 - camera.position.y + camera.size.y / 2)
     }
