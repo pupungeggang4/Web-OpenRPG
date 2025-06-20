@@ -1,6 +1,12 @@
 class SceneGame {
     static loop(game) {
         SceneGame.render(game)
+
+        if (game.menu === false) {
+            if (game.state === '') {
+                game.field.handleTick(game)
+            }
+        }
     }
 
     static render(game) {

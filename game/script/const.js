@@ -9,6 +9,6 @@ const emptySave = {
         item: []
     },
 
-    place: 'home_town',
+    position: [0, 0],
     progress: [],
 }

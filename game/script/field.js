@@ -8,6 +8,16 @@ class PlayerField {
         this.ctx.lineWidth = 2
     }
 
+    handleTick(game) {
+        this.move(game)
+    }
+
+    move(game) {
+        if (game.keyPressed['up'] === true) {
+
+        }
+    }
+
     render(ctx, camera) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.ctx.strokeRect(1, 1, 78, 78)
@@ -23,6 +33,10 @@ class Field {
         this.canvas.width = 1280
         this.canvas.height = 720
         this.ctx = this.canvas.getContext('2d')
+    }
+
+    handleTick(game) {
+        this.player.handleTick(game)
     }
 
     render(ctx) {

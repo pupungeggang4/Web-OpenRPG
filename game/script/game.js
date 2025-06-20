@@ -3,7 +3,15 @@ class Game {
         this.save = {}
         this.loadSaveData()
 
+        this.keyBinding = {
+            'left': 'a', 'right': 'd', 'up': 'w', 'down': 's'
+        }
+        this.keyPressed = {
+            'left': false, 'right': false, 'up': false, 'down': false
+        }
+
         this.field = new Field()
+        this.player = new Player()
 
         this.scene = 'title'
         this.state = ''
@@ -54,6 +62,11 @@ class Game {
 
     keyDown(event) {
         let key = event.key
+        for (let k in this.keyPressed) {
+            if (key === this.keyBinding[k]) {
+                this.keyPressed[k] = true
+            }
+        }
         if (this.scene === 'title') {
             SceneTitle.keyDown(game, key)
         } else if (this.scene === 'game') {
@@ -63,6 +76,11 @@ class Game {
 
     keyUp(event) {
         let key = event.key
+        for (let k in this.keyPressed) {
+            if (key === this.keyBinding[k]) {
+                this.keyPressed[k] = false
+            }
+        }
         if (this.scene === 'title') {
             SceneTitle.keyUp(game, key)
         } else if (this.scene === 'game') {
