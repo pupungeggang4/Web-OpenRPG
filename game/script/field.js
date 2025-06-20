@@ -1,6 +1,7 @@
 class PlayerField {
     constructor() {
         this.rect = new Rect2(0, 0, 80, 80)
+        this.speed = 320
         this.canvas = document.createElement('canvas')
         this.canvas.width = this.rect.size.x
         this.canvas.height = this.rect.size.y
@@ -13,8 +14,17 @@ class PlayerField {
     }
 
     move(game) {
+        if (game.keyPressed['left'] === true) {
+            this.rect.position.x -= this.speed * game.delta / 1000
+        }
+        if (game.keyPressed['right'] === true) {
+            this.rect.position.x += this.speed * game.delta / 1000
+        }
         if (game.keyPressed['up'] === true) {
-
+            this.rect.position.y -= this.speed * game.delta / 1000
+        }
+        if (game.keyPressed['down'] === true) {
+            this.rect.position.y += this.speed * game.delta / 1000
         }
     }
 
@@ -37,6 +47,14 @@ class Field {
 
     handleTick(game) {
         this.player.handleTick(game)
+    }
+
+    readSave(save) {
+        this.player.rect.position = new Vector2(save.position[0], save.position[1])
+    }
+
+    writeSave(save) {
+        save.position = [this.player.rect.position.x, this.player.rect.position.y]
     }
 
     render(ctx) {

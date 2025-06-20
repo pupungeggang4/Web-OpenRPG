@@ -26,6 +26,8 @@ class SceneTitle {
         if (pointInsideRectUI(pos, UI.title.buttonStart)) {
             game.scene = 'game'
             game.state = ''
+            game.player.readSave(game.save)
+            game.field.readSave(game.save)
         } else if (pointInsideRectUI(pos, UI.title.buttonErase)) {
             game.eraseSaveData()
         }

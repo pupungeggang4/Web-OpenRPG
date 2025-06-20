@@ -38,7 +38,7 @@ class Game {
     }
 
     saveSaveData() {
-        localStorage.setItem('pupungeggang4:OpenRPG', JSON.parse(this.save))
+        localStorage.setItem('pupungeggang4:OpenRPG', JSON.stringify(this.save))
     }
 
     eraseSaveData() {

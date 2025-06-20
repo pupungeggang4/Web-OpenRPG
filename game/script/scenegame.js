@@ -43,6 +43,9 @@ class SceneGame {
                     game.menu = false
                     game.scene = 'title'
                     game.state = ''
+                    game.player.writeSave(game.save)
+                    game.field.writeSave(game.save)
+                    game.saveSaveData()
                 }
             }
         }
