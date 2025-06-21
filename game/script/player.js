@@ -8,7 +8,7 @@ class Player {
     readSave(save) {
         this.playerLevel = save.player.level
         this.playerExp = save.player.exp
-        this.playerExpMax = save.player.expmax
+        this.playerExpMax = save.player.expMax
     }
 
     writeSave(save) {

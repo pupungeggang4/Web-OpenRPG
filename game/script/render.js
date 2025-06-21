@@ -11,6 +11,29 @@ class Render {
         ctx.fillStyle = 'black'
     }
 
+    static renderInfo(ctx, game, player) {
+        ctx.fillStyle = 'white'
+        Render.fillRectUI(ctx, UI.info.rect)
+        Render.strokeRectUI(ctx, UI.info.rect)
+        ctx.fillStyle = 'black'
+
+        Render.strokeRectUI(ctx, UI.info.tabProfile)
+        Render.drawImageUI(ctx, img.icon.profile, UI.info.iconProfile)
+        Render.strokeRectUI(ctx, UI.info.tabInventory)
+        Render.drawImageUI(ctx, img.icon.inventory, UI.info.iconInventory)
+        Render.strokeRectUI(ctx, UI.info.tabDeck)
+        Render.drawImageUI(ctx, img.icon.card, UI.info.iconDeck)
+        Render.strokeRectUI(ctx, UI.info.tabMap)
+        Render.drawImageUI(ctx, img.icon.map, UI.info.iconMap)
+        Render.drawImageUI(ctx, img.button.close, UI.info.buttonClose)
+
+        if (game.tabInfoPlayer === 'profile') {
+            Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
+            Render.fillTextUI(ctx, `Exp.${player.playerExp}/${player.playerExpMax}`, UI.info.textExp)
+            Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
+        }
+    }
+
     static renderMenu(ctx, game) {
         ctx.fillStyle = 'white'
         Render.fillRectUI(ctx, UI.menu.rect)
@@ -48,7 +71,7 @@ class Render {
         ctx.fillText(text, pos[0], pos[1])
     }
 
-    static renderImageUI(ctx, image, pos) {
+    static drawImageUI(ctx, image, pos) {
         ctx.drawImage(image, pos[0], pos[1])
     }
 }

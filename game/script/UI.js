@@ -15,12 +15,22 @@ const UI = {
     },
 
     info: {
-        rect: [40, 160, 960, 640],
-        
+        rect: [160, 40, 960, 640],
+        buttonClose: [1080, 40, 40, 40],
+        tabProfile: [160, 40, 200, 40],
+        iconProfile: [240, 40],
+        tabInventory: [360, 40, 200, 40],
+        iconInventory: [440, 40],
+        tabDeck: [560, 40, 200, 40],
+        iconDeck: [640, 40],
+        tabMap: [760, 40, 200, 40],
+        iconMap: [840, 40],
+        textLevel: [164, 284],
+        textExp: [164, 324]
     },
 
     shop: {
-
+        rect: [40, 160, 960, 640],
     },
 
     battle: {

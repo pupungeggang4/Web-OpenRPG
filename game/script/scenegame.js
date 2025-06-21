@@ -11,9 +11,14 @@ class SceneGame {
 
     static render(game) {
         Render.init(game.ctx)
-        Render.strokeRectUI(game.ctx, UI.game.buttonMenu)
+        Render.drawImageUI(game.ctx, img.button.menu, UI.game.buttonMenu)
+        Render.drawImageUI(game.ctx, img.button.info, UI.game.buttonInfo)
 
         game.field.render(game.ctx)
+
+        if (game.state === 'info') {
+            Render.renderInfo(game.ctx, game, game.player)
+        }
 
         if (game.menu === true) {
             Render.renderMenu(game.ctx, game)
@@ -33,6 +38,16 @@ class SceneGame {
             if (game.menu === false) {
                 if (pointInsideRectUI(pos, UI.game.buttonMenu)) {
                     game.menu = true
+                }
+
+                if (game.state === '') {
+                    if (pointInsideRectUI(pos, UI.game.buttonInfo)) {
+                        game.state = 'info'
+                    }
+                } else if (game.state === 'info') {
+                    if (pointInsideRectUI(pos, UI.game.buttonInfo) || pointInsideRectUI(pos, UI.info.buttonClose)) {
+                        game.state = ''
+                    }
                 }
             } else if (game.menu === true) {
                 if (pointInsideRectUI(pos, UI.game.buttonMenu)) {

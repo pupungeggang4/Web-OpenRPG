@@ -1,5 +1,6 @@
 class Game {
     constructor() {
+        imageLoad()
         this.save = {}
         this.loadSaveData()
 
@@ -11,11 +12,15 @@ class Game {
         }
 
         this.field = new Field()
+        this.battle = new Battle()
+        this.event = new Event()
+        this.shop = new Shop()
         this.player = new Player()
 
         this.scene = 'title'
         this.state = ''
         this.menu = false
+        this.tabInfoPlayer = 'profile'
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')

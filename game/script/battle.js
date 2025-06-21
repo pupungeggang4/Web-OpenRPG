@@ -1,0 +1,7 @@
+class PlayerBattle {
+
+}
+
+class Battle {
+
+}
