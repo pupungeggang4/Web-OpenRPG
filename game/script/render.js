@@ -28,9 +28,24 @@ class Render {
         Render.drawImageUI(ctx, img.button.close, UI.info.buttonClose)
 
         if (game.tabInfoPlayer === 'profile') {
+            Render.strokeRectUI(ctx, UI.info.portrait)
             Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
             Render.fillTextUI(ctx, `Exp.${player.playerExp}/${player.playerExpMax}`, UI.info.textExp)
             Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
+
+            Render.strokeRectUI(ctx, UI.info.descriptionRect)
+            Render.fillTextUI(ctx, 'Weapon', UI.info.textWeapon)
+            Render.strokeRectUI(ctx, UI.info.weapon)
+            Render.fillTextUI(ctx, 'Equipment', UI.info.textEquipment)
+            for (let i = 0; i < 8; i++) {
+                let rect = [UI.info.equipmentStart[0] + UI.info.equipmentRect[2] * i, UI.info.equipmentStart[1], UI.info.equipmentRect[0], UI.info.equipmentRect[1]]
+                Render.strokeRectUI(ctx, rect)
+            }
+            Render.fillTextUI(ctx, 'Item', UI.info.textItem)
+            for (let i = 0; i < 8; i++) {
+                let rect = [UI.info.itemStart[0] + UI.info.itemRect[2] * i, UI.info.itemStart[1], UI.info.itemRect[0], UI.info.itemRect[1]]
+                Render.strokeRectUI(ctx, rect)
+            }
         }
     }
 

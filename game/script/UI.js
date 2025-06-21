@@ -24,9 +24,21 @@ const UI = {
         tabDeck: [560, 40, 200, 40],
         iconDeck: [640, 40],
         tabMap: [760, 40, 200, 40],
+
+        portrait: [200, 120, 160, 160],
         iconMap: [840, 40],
-        textLevel: [164, 284],
-        textExp: [164, 324]
+        textLevel: [164, 364],
+        textExp: [164, 404],
+
+        descriptionRect: [760, 160, 320, 80],
+        textWeapon: [444, 84],
+        weapon: [440, 160, 80, 80],
+        textEquipment: [444, 284],
+        equipmentStart: [440, 360],
+        equipmentRect: [80, 80, 80, 0],
+        textItem: [444, 484],
+        itemStart: [440, 560],
+        itemRect: [80, 80, 80, 0],
     },
 
     shop: {
