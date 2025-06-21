@@ -10,7 +10,21 @@ const UI = {
     },
 
     game: {
-        buttonMenu: [1180, 20, 80, 80]
+        buttonMenu: [1180, 20, 80, 80],
+        buttonInfo: [1180, 620, 80, 80]
+    },
+
+    info: {
+        rect: [40, 160, 960, 640],
+        
+    },
+
+    shop: {
+
+    },
+
+    battle: {
+
     },
 
     menu: {
