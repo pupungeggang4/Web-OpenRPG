@@ -15,6 +15,10 @@ class Rect2 {
         this.size = new Vector2(w, h)
     }
 
+    overlap(rect) {
+        return !(this.position.x < rect.position.x - rect.size.x / 2 - this.size.x / 2 || this.position.x > rect.position.x + rect.size.x / 2 + this.size.x / 2 || this.position.y < rect.position.y - rect.size.y / 2 - this.size.y / 2 || this.position.y > rect.position.y + rect.size.y / 2 + this.size.y / 2)
+    }
+
     clone() {
         return new Rect2(this.position.x, this.position.y, this.size.x, this.size.y)
     }

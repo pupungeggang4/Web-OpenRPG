@@ -3,6 +3,17 @@ class Player {
         this.playerLevel = 1
         this.playerExp = 0
         this.playerExpMax = 0
+
+        this.selectedDeck = 1
+        this.adventureMode = false
+    }
+
+    adventureStart() {
+        this.adventureMode = true
+    }
+
+    adventureEnd() {
+        this.adventureMode = false
     }
 
     readSave(save) {

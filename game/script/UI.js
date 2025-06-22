@@ -11,7 +11,8 @@ const UI = {
 
     game: {
         buttonMenu: [1180, 20, 80, 80],
-        buttonInfo: [1180, 620, 80, 80]
+        buttonInfo: [1180, 620, 80, 80],
+        textPosition: [24, 24]
     },
 
     info: {
@@ -39,6 +40,19 @@ const UI = {
         textItem: [444, 484],
         itemStart: [440, 560],
         itemRect: [80, 80, 80, 0],
+
+        textInventory: [164, 84],
+        iDescriptionRect: [240, 120, 800, 80],
+        inventoryStart: [240, 200],
+        inventoryRect: [80, 80, 80, 80],
+        buttonPrev: [180, 340, 40, 40],
+        buttonNext: [1060, 340, 40, 40],
+
+        textDeck: [164, 84],
+        deckStart: [240, 120],
+        deckRect: [200, 240, 200, 240],
+
+        map: [400, 120],
     },
 
     shop: {
@@ -47,6 +61,14 @@ const UI = {
 
     battle: {
 
+    },
+
+    card: {
+        rect: [0, 0, 200, 240],
+        textEnergy: [4, 4],
+        textName: [4, 144],
+        image: [20, 20, 160, 120],
+        textDescription: [[4, 164], [4, 184], [4, 204], [4, 224]]
     },
 
     menu: {

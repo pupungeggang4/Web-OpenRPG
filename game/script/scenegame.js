@@ -10,9 +10,11 @@ class SceneGame {
     }
 
     static render(game) {
+        let player = game.field.player
         Render.init(game.ctx)
         Render.drawImageUI(game.ctx, img.button.menu, UI.game.buttonMenu)
         Render.drawImageUI(game.ctx, img.button.info, UI.game.buttonInfo)
+        Render.fillTextUI(game.ctx, `${Math.floor(player.rect.position.x)},${Math.floor(player.rect.position.y)}`, [24, 24])
 
         game.field.render(game.ctx)
 
@@ -43,10 +45,28 @@ class SceneGame {
                 if (game.state === '') {
                     if (pointInsideRectUI(pos, UI.game.buttonInfo)) {
                         game.state = 'info'
+                        game.tabProfileIndex = -1
+                        game.tabCardPage = 0
+                    }
+
+                    if (game.stateField === 'shop') {
+                        SceneGame.handleClickShop(game, pos)
                     }
                 } else if (game.state === 'info') {
                     if (pointInsideRectUI(pos, UI.game.buttonInfo) || pointInsideRectUI(pos, UI.info.buttonClose)) {
                         game.state = ''
+                    }
+
+                    if (pointInsideRectUI(pos, UI.info.tabProfile)) {
+                        game.tabInfoPlayer = 'profile'
+                        game.tabProfileIndex = -1
+                    } else if (pointInsideRectUI(pos, UI.info.tabInventory)) {
+                        game.tabInfoPlayer = 'inventory'
+                    } else if (pointInsideRectUI(pos, UI.info.tabDeck)) {
+                        game.tabInfoPlayer = 'deck'
+                        game.tabCardPage = -1
+                    } else if (pointInsideRectUI(pos, UI.info.tabMap)) {
+                        game.tabInfoPlayer = 'map'
                     }
                 }
             } else if (game.menu === true) {
@@ -64,5 +84,9 @@ class SceneGame {
                 }
             }
         }
+    }
+
+    static handleClickShop(game, pos) {
+
     }
 }

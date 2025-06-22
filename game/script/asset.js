@@ -13,7 +13,9 @@ let img = {
         card: new Image(),
         inventory: new Image(),
         map: new Image()
-    }
+    },
+
+    map: new Image(),
 }
 
 function imageLoad() {
@@ -28,4 +30,6 @@ function imageLoad() {
     img.icon.card.src = 'image/icon/IconCard.png'
     img.icon.inventory.src = 'image/icon/IconItem.png'
     img.icon.map.src = 'image/icon/IconMap.png'
+
+    img.map.src = 'image/Map.png'
 }

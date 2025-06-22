@@ -46,6 +46,31 @@ class Render {
                 let rect = [UI.info.itemStart[0] + UI.info.itemRect[2] * i, UI.info.itemStart[1], UI.info.itemRect[0], UI.info.itemRect[1]]
                 Render.strokeRectUI(ctx, rect)
             }
+        } else if (game.tabInfoPlayer === 'inventory') {
+            Render.fillTextUI(ctx, 'Inventory', UI.info.textInventory)
+            Render.strokeRectUI(ctx, UI.info.iDescriptionRect)
+            for (let i = 0; i < 50; i++) {
+                let row = Math.floor(i / 10)
+                let col = i - row * 10
+                let rect = [UI.info.inventoryStart[0] + UI.info.inventoryRect[2] * col, UI.info.inventoryStart[1] + UI.info.inventoryRect[3] * row, UI.info.inventoryRect[0], UI.info.inventoryRect[1]]
+                Render.strokeRectUI(ctx, rect)
+            }
+            Render.drawImageUI(ctx, img.button.prev, UI.info.buttonPrev)
+            Render.drawImageUI(ctx, img.button.next, UI.info.buttonNext)
+        } else if (game.tabInfoPlayer === 'deck') {
+            Render.fillTextUI(ctx, 'Deck', UI.info.textDeck)
+            for (let i = 0; i < 8; i++) {
+                let row = Math.floor(i / 4)
+                let col = i - row * 4
+                let rect = [UI.info.deckStart[0] + UI.info.deckRect[2] * col, UI.info.deckStart[1] + UI.info.deckRect[3] * row, UI.info.deckRect[0], UI.info.deckRect[1]]
+                Render.strokeRectUI(ctx, rect)
+            }
+            Render.drawImageUI(ctx, img.button.prev, UI.info.buttonPrev)
+            Render.drawImageUI(ctx, img.button.next, UI.info.buttonNext)
+        } else if (game.tabInfoPlayer === 'map') {
+            Render.drawImageUI(ctx, img.map, UI.info.map)
+            let pos = [game.field.player.rect.position.x / 80, game.field.player.rect.position.y / 80]
+            ctx.fillRect(640 + pos[0] - 10, 360 + pos[1] - 10, 20, 20)
         }
     }
 

@@ -52,21 +52,23 @@ class Field {
         this.camera.position.y = this.player.rect.position.y
     }
 
+    render(ctx) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        for (let i = 0; i < this.thingList.length; i++) {
+            if (this.thingList[i].rect.overlap(this.camera)) {
+                this.thingList[i].render(this.ctx, this.camera)
+            }
+        }
+        this.player.render(this.ctx, this.camera)
+        ctx.drawImage(this.canvas, 0, 0)
+    }
+
     readSave(save) {
         this.player.rect.position = new Vector2(save.position[0], save.position[1])
     }
 
     writeSave(save) {
         save.position = [this.player.rect.position.x, this.player.rect.position.y]
-    }
-
-    render(ctx) {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        for (let i = 0; i < this.thingList.length; i++) {
-            this.thingList[i].render(this.ctx, this.camera)
-        }
-        this.player.render(this.ctx, this.camera)
-        ctx.drawImage(this.canvas, 0, 0)
     }
 }
 
