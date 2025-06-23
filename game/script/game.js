@@ -19,7 +19,7 @@ class Game {
 
         this.scene = 'title'
         this.state = ''
-        this.stateField = ''
+        this.info = false
         this.stateBattle = ''
         this.menu = false
         this.tabInfoPlayer = 'profile'

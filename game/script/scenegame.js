@@ -18,7 +18,7 @@ class SceneGame {
 
         game.field.render(game.ctx)
 
-        if (game.state === 'info') {
+        if (game.info === true) {
             Render.renderInfo(game.ctx, game, game.player)
         }
 
@@ -42,19 +42,18 @@ class SceneGame {
                     game.menu = true
                 }
 
-                if (game.state === '') {
+                if (game.info === false) {
                     if (pointInsideRectUI(pos, UI.game.buttonInfo)) {
-                        game.state = 'info'
+                        game.info = true
                         game.tabProfileIndex = -1
                         game.tabCardPage = 0
                     }
 
-                    if (game.stateField === 'shop') {
-                        SceneGame.handleClickShop(game, pos)
+                    if (game.state === '') {
                     }
-                } else if (game.state === 'info') {
+                } else {
                     if (pointInsideRectUI(pos, UI.game.buttonInfo) || pointInsideRectUI(pos, UI.info.buttonClose)) {
-                        game.state = ''
+                        game.info = false
                     }
 
                     if (pointInsideRectUI(pos, UI.info.tabProfile)) {
