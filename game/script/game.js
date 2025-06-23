@@ -22,10 +22,10 @@ class Game {
         this.info = false
         this.stateBattle = ''
         this.menu = false
-        this.tabInfoPlayer = 'profile'
-        this.tabProfileIndex = -1
-        this.tabInventoryPage = 0
-        this.tabCardPage = 0
+        this.infoTabPlayer = 'profile'
+        this.infoProfileIndex = -1
+        this.infoInventoryPage = 0
+        this.infoCardPage = 0
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')

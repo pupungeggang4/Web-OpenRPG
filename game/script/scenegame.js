@@ -45,27 +45,27 @@ class SceneGame {
                 if (game.info === false) {
                     if (pointInsideRectUI(pos, UI.game.buttonInfo)) {
                         game.info = true
-                        game.tabProfileIndex = -1
-                        game.tabCardPage = 0
+                        game.infoProfileIndex = -1
+                        game.infoCardPage = 0
                     }
 
                     if (game.state === '') {
                     }
-                } else {
+                } else if (game.info === true){
                     if (pointInsideRectUI(pos, UI.game.buttonInfo) || pointInsideRectUI(pos, UI.info.buttonClose)) {
                         game.info = false
                     }
 
                     if (pointInsideRectUI(pos, UI.info.tabProfile)) {
-                        game.tabInfoPlayer = 'profile'
-                        game.tabProfileIndex = -1
+                        game.infoTabPlayer = 'profile'
+                        game.infoProfileIndex = -1
                     } else if (pointInsideRectUI(pos, UI.info.tabInventory)) {
-                        game.tabInfoPlayer = 'inventory'
+                        game.infoTabPlayer = 'inventory'
                     } else if (pointInsideRectUI(pos, UI.info.tabDeck)) {
-                        game.tabInfoPlayer = 'deck'
-                        game.tabCardPage = -1
+                        game.infoTabPlayer = 'deck'
+                        game.infoCardPage = -1
                     } else if (pointInsideRectUI(pos, UI.info.tabMap)) {
-                        game.tabInfoPlayer = 'map'
+                        game.infoTabPlayer = 'map'
                     }
                 }
             } else if (game.menu === true) {

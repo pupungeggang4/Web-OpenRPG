@@ -27,7 +27,7 @@ class Render {
         Render.drawImageUI(ctx, img.icon.map, UI.info.iconMap)
         Render.drawImageUI(ctx, img.button.close, UI.info.buttonClose)
 
-        if (game.tabInfoPlayer === 'profile') {
+        if (game.infoTabPlayer === 'profile') {
             Render.strokeRectUI(ctx, UI.info.portrait)
             Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
             Render.fillTextUI(ctx, `Exp.${player.playerExp}/${player.playerExpMax}`, UI.info.textExp)
@@ -46,7 +46,7 @@ class Render {
                 let rect = [UI.info.itemStart[0] + UI.info.itemRect[2] * i, UI.info.itemStart[1], UI.info.itemRect[0], UI.info.itemRect[1]]
                 Render.strokeRectUI(ctx, rect)
             }
-        } else if (game.tabInfoPlayer === 'inventory') {
+        } else if (game.infoTabPlayer === 'inventory') {
             Render.fillTextUI(ctx, 'Inventory', UI.info.textInventory)
             Render.strokeRectUI(ctx, UI.info.iDescriptionRect)
             for (let i = 0; i < 50; i++) {
@@ -57,7 +57,7 @@ class Render {
             }
             Render.drawImageUI(ctx, img.button.prev, UI.info.buttonPrev)
             Render.drawImageUI(ctx, img.button.next, UI.info.buttonNext)
-        } else if (game.tabInfoPlayer === 'deck') {
+        } else if (game.infoTabPlayer === 'deck') {
             Render.fillTextUI(ctx, 'Deck', UI.info.textDeck)
             for (let i = 0; i < 8; i++) {
                 let row = Math.floor(i / 4)
@@ -67,7 +67,7 @@ class Render {
             }
             Render.drawImageUI(ctx, img.button.prev, UI.info.buttonPrev)
             Render.drawImageUI(ctx, img.button.next, UI.info.buttonNext)
-        } else if (game.tabInfoPlayer === 'map') {
+        } else if (game.infoTabPlayer === 'map') {
             Render.drawImageUI(ctx, img.map, UI.info.map)
             let pos = [game.field.player.rect.position.x / 80, game.field.player.rect.position.y / 80]
             ctx.fillRect(640 + pos[0] - 10, 360 + pos[1] - 10, 20, 20)
