@@ -10,6 +10,7 @@ class Game {
         this.keyPressed = {
             'left': false, 'right': false, 'up': false, 'down': false
         }
+        this.gamepadIndex = null
 
         this.field = new Field()
         this.battle = new Battle()
@@ -29,6 +30,7 @@ class Game {
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')
+        window.addEventListener('gamepadconnected', (event) => this.gamepadConnect(event), false)
         window.addEventListener('keydown', (event) => this.keyDown(event), false)
         window.addEventListener('keyup', (event) => this.keyUp(event), false)
         this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event), false)
@@ -68,6 +70,17 @@ class Game {
         }
 
         this.gameLoop = requestAnimationFrame(() => this.loop())
+    }
+
+    gamepadConnect(event) {
+        console.log(
+            "Gamepad connected at index %d: %s. %d buttons, %d axes.",
+            event.gamepad.index,
+            event.gamepad.id,
+            event.gamepad.buttons.length,
+            event.gamepad.axes.length,
+        )
+        this.gamepadIndex = event.gamepad.index
     }
 
     keyDown(event) {

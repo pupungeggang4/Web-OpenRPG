@@ -1,6 +1,12 @@
 class SceneTitle {
     static loop(game) {
         SceneTitle.render(game)
+        if (game.gamepadIndex != null) {
+            let gp = navigator.getGamepads()[game.gamepadIndex]
+            if (gp.buttons[12].pressed === true) {
+                console.log(12)
+            }
+        }
     }
 
     static render(game) {
