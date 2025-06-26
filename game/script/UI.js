@@ -51,6 +51,7 @@ const UI = {
         textDeck: [164, 84],
         deckStart: [240, 120],
         deckRect: [200, 240, 200, 240],
+        deckImageStart: [300, 200],
 
         map: [400, 120],
     },

@@ -4,7 +4,7 @@ class Player {
         this.playerExp = 0
         this.playerExpMax = 0
 
-        this.selectedDeck = 1
+        this.selectedDeck = 0
         this.adventureMode = false
     }
 

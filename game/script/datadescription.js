@@ -4,13 +4,13 @@ const dataCardD = {
 }
 
 const dataWeaponD = {
-
+    1: {'name': 'sword', 'description': ['Deal 4 damage.']}
 }
 
 const dataEquipmentD = {
-
+    1: {'name': 'small shield', 'description': ['Start of battle', 'Gain +5 max HP.']}
 }
 
 const dataItemD = {
-    
+    1: {'name': 'heal potion', 'description': ['Restore 10 HP.']}
 }

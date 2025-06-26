@@ -22,16 +22,28 @@ class Weapon extends InventoryThing {
     constructor() {
         super()
     }
+
+    setData(ID) {
+
+    }
 }
 
 class Equipment extends InventoryThing {
     constructor() {
         super()
     }
+
+    setData(ID) {
+
+    }
 }
 
 class Item extends InventoryThing {
     constructor() {
         super()
+    }
+
+    setData(ID) {
+        
     }
 }

@@ -6,13 +6,13 @@ const dataCard = {
 }
 
 const dataWeapon = {
-
+    1: {'ID': 1, 'name': 'sword', 'element': 'noraml', 'rarity': 'basic', 'energy': 0, 'effect': []}
 }
 
 const dataEquipment = {
-
+    1: {'ID': 1, 'name': 'small shield', 'element': 'normal', 'rarity': 'basic', 'effect': []}
 }
 
 const dataItem = {
-
+    1: {'ID': 1, 'name': 'heal potion', 'element': 'normal', 'rarity': 'basic', 'effect': []}
 }
