@@ -58,6 +58,14 @@ class Game {
         this.save = JSON.parse(localStorage.getItem('pupungeggang4:OpenRPG'))
     }
 
+    saveAndExit() {
+        this.scene = 'title'
+        this.state = ''
+        this.player.writeSave(game.save)
+        this.field.writeSave(game.save)
+        this.saveSaveData()
+    }
+
     loop() {
         this.framePrevious = this.frameCurrent
         this.frameCurrent = performance.now()

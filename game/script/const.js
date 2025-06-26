@@ -3,6 +3,7 @@ const emptySave = {
         level: 1,
         exp: 0,
         expMax: 0,
+        gold: 50,
         card: [],
         weapon: [],
         equipment: [],

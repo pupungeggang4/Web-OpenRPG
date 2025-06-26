@@ -32,6 +32,7 @@ class Render {
             Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
             Render.fillTextUI(ctx, `Exp.${player.playerExp}/${player.playerExpMax}`, UI.info.textExp)
             Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
+            Render.fillTextUI(ctx, `Gold ${player.gold}`, UI.info.textGold)
 
             Render.strokeRectUI(ctx, UI.info.descriptionRect)
             Render.fillTextUI(ctx, 'Weapon', UI.info.textWeapon)
@@ -67,6 +68,12 @@ class Render {
             }
             Render.drawImageUI(ctx, img.button.prev, UI.info.buttonPrev)
             Render.drawImageUI(ctx, img.button.next, UI.info.buttonNext)
+
+            if (player.adventureMode === false) {
+                
+            } else {
+
+            }
         } else if (game.infoTabPlayer === 'map') {
             Render.drawImageUI(ctx, img.map, UI.info.map)
             let pos = [game.field.player.rect.position.x / 80, game.field.player.rect.position.y / 80]

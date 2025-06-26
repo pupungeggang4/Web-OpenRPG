@@ -28,11 +28,32 @@ class SceneGame {
     }
     
     static keyDown(game, key) {
-
+        
     }
 
     static keyUp(game, key) {
+        if (game.menu === false) {
+            if (key === 'Escape' || key === 'q') {
+                game.menu = true
+            }
 
+            if (game.info === false) {
+                if (key === 'r' || key === 'q' || key === 'Escape') {
+                    game.info = true
+                }
+            } else if (game.info === true) {
+                if (key === 'r') {
+                    game.info = false
+                }
+            }
+        } else if (game.menu === true) {
+            if (key === 'Escape' || key === 'r') {
+                game.menu = false
+            } else if (key === 'e') {
+                game.menu = false
+                game.saveAndExit()
+            }
+        }
     }
 
     static mouseUp(game, pos, button) {
@@ -75,11 +96,7 @@ class SceneGame {
                     game.menu = false
                 } else if (pointInsideRectUI(pos, UI.menu.buttonExit)) {
                     game.menu = false
-                    game.scene = 'title'
-                    game.state = ''
-                    game.player.writeSave(game.save)
-                    game.field.writeSave(game.save)
-                    game.saveSaveData()
+                    game.saveAndExit()
                 }
             }
         }

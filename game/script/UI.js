@@ -30,6 +30,7 @@ const UI = {
         iconMap: [840, 40],
         textLevel: [164, 364],
         textExp: [164, 404],
+        textGold: [164, 444],
 
         descriptionRect: [760, 160, 320, 80],
         textWeapon: [444, 84],
