@@ -35,6 +35,9 @@ class Game {
         window.addEventListener('keyup', (event) => this.keyUp(event), false)
         this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event), false)
 
+        this.weapon = new Weapon()
+        this.weapon.setData(1)
+
         this.frameCurrent = performance.now()
         this.framePrevious = performance.now()
         this.delta = 16

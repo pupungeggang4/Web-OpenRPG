@@ -4,6 +4,7 @@ class Card {
         this.element = ''
         this.name = ''
         this.rarity = ''
+        this.type = ''
         this.energy = 0
         this.effect = []
         this.description = []
@@ -24,6 +25,7 @@ class Card {
         this.element = data['element']
         this.name = data['name']
         this.rarity = data['rarity']
+        this.type = data['type']
         this.energy = data['energy']
         this.effect = data['effect']
         this.description = dataD['description']

@@ -1,9 +1,9 @@
 const dataCard = {
-    1: {'ID': 1, 'name': 'attack', 'element': 'normal', 'rarity': 'basic', 'energy': 1, 'effect': []},
-    2: {'ID': 2, 'name': 'guard', 'element': 'normal', 'rarity': 'basic', 'energy': 1, 'effect': []},
-    3: {'ID': 3, 'name': 'attack', 'element': 'normal', 'rarity': 'basic', 'energy': 1, 'effect': []},
-    4: {'ID': 4, 'name': 'attack', 'element': 'normal', 'rarity': 'basic', 'energy': 1, 'effect': []},
-    101: {'ID': 101, 'name': 'charge', 'element': 'fire', 'rarity': 'basic', 'energy': 0, 'effect': []}
+    1: {'ID': 1, 'name': 'attack', 'element': 'normal', 'rarity': 'basic', 'type': 'attack', 'energy': 1, 'effect': []},
+    2: {'ID': 2, 'name': 'guard', 'element': 'normal', 'rarity': 'basic', 'type': 'util', 'energy': 1, 'effect': []},
+    3: {'ID': 3, 'name': 'attack', 'element': 'normal', 'rarity': 'basic', 'type': 'attack', 'energy': 1, 'effect': []},
+    4: {'ID': 4, 'name': 'attack', 'element': 'normal', 'rarity': 'basic', 'type': 'attack', 'energy': 1, 'effect': []},
+    101: {'ID': 101, 'name': 'charge', 'element': 'fire', 'rarity': 'basic', 'type': 'util', 'energy': 0, 'effect': []}
 }
 
 const dataDeck = {
@@ -18,7 +18,7 @@ const dataDeck = {
 }
 
 const dataWeapon = {
-    1: {'ID': 1, 'name': 'sword', 'element': 'noraml', 'rarity': 'basic', 'energy': 0, 'effect': []}
+    1: {'ID': 1, 'name': 'sword', 'element': 'normal', 'rarity': 'basic', 'energy': 0, 'effect': []}
 }
 
 const dataEquipment = {
