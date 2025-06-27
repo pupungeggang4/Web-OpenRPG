@@ -63,14 +63,23 @@ class Render {
             for (let i = 0; i < 8; i++) {
                 let row = Math.floor(i / 4)
                 let col = i - row * 4
-                let rect = [UI.info.deckStart[0] + UI.info.deckRect[2] * col, UI.info.deckStart[1] + UI.info.deckRect[3] * row, UI.info.deckRect[0], UI.info.deckRect[1]]
+                let rect = [UI.info.deckStart[0] + UI.info.deckRect[0] * col, UI.info.deckStart[1] + UI.info.deckRect[1] * row, UI.info.deckRect[2], UI.info.deckRect[3]]
                 Render.strokeRectUI(ctx, rect)
             }
             Render.drawImageUI(ctx, img.button.prev, UI.info.buttonPrev)
             Render.drawImageUI(ctx, img.button.next, UI.info.buttonNext)
 
             if (player.adventureMode === false) {
-                
+                ctx.font = '20px neodgm'
+                for (let i = 0; i < 8; i++) {
+                    let row = Math.floor(i / 4)
+                    let col = i - row * 4
+                    let posImage = [UI.info.deckImageStart[0] + UI.info.deckRect[0] * col, UI.info.deckImageStart[1] + UI.info.deckRect[1] * row]
+                    Render.drawImageUI(ctx, img.deck[i], posImage)
+                    let posText = [UI.info.deckDescriptionStart[0] + UI.info.deckRect[0] * col, UI.info.deckDescriptionStart[1] + UI.info.deckRect[1] * row]
+                    Render.renderTextbox(ctx, dataDeckD[i + 1]['description'], posText, UI.info.deckDescriptionInterval)
+                }
+                ctx.font = '32px neodgm'
             } else {
 
             }
@@ -100,6 +109,13 @@ class Render {
         }
         Render.strokeRectUI(ctx, UI.menu.buttonExit)
         Render.fillTextUI(ctx, 'Exit [E]', UI.menu.textExit)
+    }
+
+    static renderTextbox(ctx, textList, start, interval) {
+        for (let i = 0; i < textList.length; i++) {
+            let pos = [start[0] + interval[0] * i, start[1] + interval[1] * i]
+            Render.fillTextUI(ctx, textList[i], pos)
+        }
     }
 
     static renderImageRect(ctx, image, rect, camera) {

@@ -88,6 +88,10 @@ class SceneGame {
                     } else if (pointInsideRectUI(pos, UI.info.tabMap)) {
                         game.infoTabPlayer = 'map'
                     }
+
+                    if (game.infoTabPlayer === 'deck') {
+                        SceneGame.handleClickInfoDeck(game, pos)
+                    }
                 }
             } else if (game.menu === true) {
                 if (pointInsideRectUI(pos, UI.game.buttonMenu)) {
@@ -97,6 +101,20 @@ class SceneGame {
                 } else if (pointInsideRectUI(pos, UI.menu.buttonExit)) {
                     game.menu = false
                     game.saveAndExit()
+                }
+            }
+        }
+    }
+
+    static handleClickInfoDeck(game, pos) {
+        let player = game.player
+        if (player.adventureMode === false) {
+            for (let i = 0; i < 8; i++) {
+                let row = Math.floor(i / 4)
+                let col = i - row * 4
+                let rect = [UI.info.deckStart[0] + UI.info.deckRect[0] * col, UI.info.deckStart[1] + UI.info.deckRect[1] * row, UI.info.deckRect[2], UI.info.deckRect[3]]
+                if (pointInsideRectUI(pos, rect)) {
+                    player.selectedDeck = i
                 }
             }
         }
