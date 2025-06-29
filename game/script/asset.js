@@ -17,6 +17,10 @@ let img = {
 
     deck: [new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image()],
 
+    card: {
+        1: new Image(), 2: new Image()
+    },
+
     weapon: {
         1: new Image(),
     },
@@ -55,6 +59,8 @@ function imageLoad() {
     img.deck[6].src = 'image/deck/deckdark.png'
     img.deck[7].src = 'image/deck/deckspecial.png'
 
+    img.card[1].src = 'image/card/card001.png'
+    img.card[2].src = 'image/card/card002.png'
     img.weapon[1].src = 'image/weapon/weapon001.png'
     img.equipment[1].src = 'image/equipment/equipment001.png'
     img.item[1].src = 'image/item/item001.png'

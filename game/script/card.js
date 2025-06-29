@@ -37,6 +37,7 @@ class Card {
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
         this.ctx.fillStyle = 'black'
         this.ctx.strokeRect(1, 1, 198, 238)
+        Render.drawImageUI(this.ctx, img.card[this.ID], UI.card.image)
         Render.strokeRectUI(this.ctx, UI.card.image)
         this.ctx.font = '32px neodgm'
         Render.fillTextUI(this.ctx, `${this.energy}`, UI.card.textEnergy)
