@@ -84,7 +84,7 @@ class SceneGame {
                         game.infoTabPlayer = 'inventory'
                     } else if (pointInsideRectUI(pos, UI.info.tabDeck)) {
                         game.infoTabPlayer = 'deck'
-                        game.infoCardPage = -1
+                        game.infoCardPage = 0
                     } else if (pointInsideRectUI(pos, UI.info.tabMap)) {
                         game.infoTabPlayer = 'map'
                     }

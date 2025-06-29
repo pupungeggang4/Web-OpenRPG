@@ -27,6 +27,7 @@ class Game {
         this.infoProfileIndex = -1
         this.infoInventoryPage = 0
         this.infoCardPage = 0
+        this.selectedDeck = 0
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')

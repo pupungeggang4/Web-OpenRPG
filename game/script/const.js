@@ -4,10 +4,12 @@ const emptySave = {
         exp: 0,
         expMax: 0,
         gold: 50,
-        card: [],
-        weapon: [],
+        adventureMode: false,
+        inventory: [],
+        weapon: 0,
         equipment: [],
-        item: []
+        item: [],
+        deck: [],
     },
 
     position: [0, 0],

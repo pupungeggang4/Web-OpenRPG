@@ -36,15 +36,24 @@ class Render {
 
             Render.strokeRectUI(ctx, UI.info.descriptionRect)
             Render.fillTextUI(ctx, 'Weapon', UI.info.textWeapon)
+            if (player.weapon.ID != 0) {
+                player.weapon.render(ctx, UI.info.weapon)
+            }
             Render.strokeRectUI(ctx, UI.info.weapon)
             Render.fillTextUI(ctx, 'Equipment', UI.info.textEquipment)
             for (let i = 0; i < 8; i++) {
                 let rect = [UI.info.equipmentStart[0] + UI.info.equipmentRect[2] * i, UI.info.equipmentStart[1], UI.info.equipmentRect[0], UI.info.equipmentRect[1]]
+                if (i < player.equipment.length) {
+                    player.equipment[i].render(ctx, rect)
+                }
                 Render.strokeRectUI(ctx, rect)
             }
             Render.fillTextUI(ctx, 'Item', UI.info.textItem)
             for (let i = 0; i < 8; i++) {
                 let rect = [UI.info.itemStart[0] + UI.info.itemRect[2] * i, UI.info.itemStart[1], UI.info.itemRect[0], UI.info.itemRect[1]]
+                if (i < player.item.length) {
+                    player.item[i].render(ctx, rect)
+                }
                 Render.strokeRectUI(ctx, rect)
             }
         } else if (game.infoTabPlayer === 'inventory') {
@@ -81,7 +90,17 @@ class Render {
                 }
                 ctx.font = '32px neodgm'
             } else {
-
+                ctx.font = '20px neodgm'
+                for (let i = 0; i < 8; i++) {
+                    let row = Math.floor(i / 4)
+                    let col = i - row * 4
+                    let pos = [UI.info.deckStart[0] + UI.info.deckRect[0] * col, UI.info.deckStart[1] + UI.info.deckRect[1] * row]
+                    let index = game.infoCardPage * 8 + i
+                    if (index < player.deck.length) {
+                        player.deck[index].render(ctx, pos)
+                    }
+                }
+                ctx.font = '32px neodgm'
             }
         } else if (game.infoTabPlayer === 'map') {
             Render.drawImageUI(ctx, img.map, UI.info.map)

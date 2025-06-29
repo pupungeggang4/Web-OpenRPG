@@ -11,6 +11,7 @@ class PlayerField {
 
     handleTick(game) {
         this.move(game)
+        this.adventureHandle(game)
     }
 
     move(game) {
@@ -28,6 +29,24 @@ class PlayerField {
         }
     }
 
+    adventureHandle(game) {
+        let v = false
+        let va = game.field.villageArea
+
+        for (let i = 0; i < va.length; i++) {
+            if (this.rect.position.insideArea(va[i])) {
+                v = true
+                break
+            }
+        }
+
+        if (v === false && game.player.adventureMode === false) {
+            game.player.adventureStart(game)
+        } else if (v === true && game.player.adventureMode === true) {
+            game.player.adventureEnd(game)
+        }
+    }
+
     render(ctx, camera) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.ctx.strokeRect(1, 1, 78, 78)
@@ -37,6 +56,7 @@ class PlayerField {
 
 class Field {
     constructor() {
+        this.villageArea = [[-320, -320, 640, 640]]
         this.player = new PlayerField()
         this.thingList = [new FieldEnemy()]
         this.camera = new Rect2(0, 0, 1280, 720)
@@ -55,7 +75,7 @@ class Field {
     render(ctx) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         for (let i = 0; i < this.thingList.length; i++) {
-            if (this.thingList[i].rect.overlap(this.camera)) {
+            if (this.thingList[i].rect.position.insideRect(this.camera)) {
                 this.thingList[i].render(this.ctx, this.camera)
             }
         }

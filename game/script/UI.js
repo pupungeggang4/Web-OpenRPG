@@ -71,7 +71,8 @@ const UI = {
         textEnergy: [4, 4],
         textName: [4, 144],
         image: [20, 20, 160, 120],
-        textDescription: [[4, 164], [4, 184], [4, 204], [4, 224]]
+        textDescriptionStart: [4, 164],
+        textDescriptionInterval: [0, 18],
     },
 
     menu: {

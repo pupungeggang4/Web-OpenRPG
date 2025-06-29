@@ -7,14 +7,14 @@ const dataCard = {
 }
 
 const dataDeck = {
-    1: {'ID': 1, 'name': 'normal deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
-    2: {'ID': 2, 'name': 'fire deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
-    3: {'ID': 3, 'name': 'water deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
-    4: {'ID': 4, 'name': 'wind deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
-    5: {'ID': 5, 'name': 'earth deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
-    6: {'ID': 6, 'name': 'light deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
-    7: {'ID': 7, 'name': 'dark deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
-    8: {'ID': 8, 'name': 'special deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2]},
+    1: {'ID': 1, 'name': 'normal deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    2: {'ID': 2, 'name': 'fire deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    3: {'ID': 3, 'name': 'water deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    4: {'ID': 4, 'name': 'wind deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    5: {'ID': 5, 'name': 'earth deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    6: {'ID': 6, 'name': 'light deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    7: {'ID': 7, 'name': 'dark deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    8: {'ID': 8, 'name': 'special deck', 'deck': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
 }
 
 const dataWeapon = {

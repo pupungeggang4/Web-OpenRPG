@@ -42,9 +42,7 @@ class Card {
         Render.fillTextUI(this.ctx, `${this.energy}`, UI.card.textEnergy)
         this.ctx.font = '16px neodgm'
         Render.fillTextUI(this.ctx, `${this.name}`, UI.card.textName)
-        for (let i = 0; i < this.description.length; i++) {
-            Render.fillTextUI(this.ctx, `${this.description[i]}`, UI.card.textDescription[i])
-        }
+        Render.renderTextbox(this.ctx, this.description, UI.card.textDescriptionStart, UI.card.textDescriptionInterval)
         ctx.drawImage(this.canvas, pos[0], pos[1])
     }
 }

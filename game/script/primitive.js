@@ -4,6 +4,14 @@ class Vector2 {
         this.y = y
     }
 
+    insideArea(rect) {
+        return this.x > rect[0] && this.x < rect[0] + rect[2] && this.y > rect[1] && this.y < rect[1] + rect[3]
+    }
+
+    insideRect(rect) {
+        return this.x > rect.position.x - rect.size.x / 2 && this.x < rect.position.x + rect.size.x / 2 && this.y > rect.position.y - rect.size.y / 2 && this.y < rect.position.y + rect.size.y / 2
+    }
+
     clone() {
         return new Vector2(this.x, this.y)
     }

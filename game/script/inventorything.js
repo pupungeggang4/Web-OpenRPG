@@ -22,17 +22,31 @@ class InventoryThing {
     }
 }
 
+class InventoryItem {
+    constructor() {
+        this.ID = 0
+    }
+}
+
 class Weapon extends InventoryThing {
     constructor() {
         super()
     }
 
     setData(ID) {
-        let data = JSON.parse(JSON.stringify(dataWeapon[ID]))
-        let dataD = JSON.parse(JSON.stringify(dataWeaponD[ID]))
         this.ID = ID
-        this.energy = data['energy']
-        super.setData(data, dataD)
+        if (ID != 0) {
+            let data = JSON.parse(JSON.stringify(dataWeapon[ID]))
+            let dataD = JSON.parse(JSON.stringify(dataWeaponD[ID]))
+            this.energy = data['energy']
+            super.setData(data, dataD)
+        }
+    }
+
+    render(ctx, pos) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.drawImage(img.weapon[this.ID], 0, 0)
+        ctx.drawImage(this.canvas, pos[0], pos[1])
     }
 }
 
@@ -47,6 +61,12 @@ class Equipment extends InventoryThing {
         this.ID = ID
         super.setData(data, dataD)
     }
+
+    render(ctx, pos) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.drawImage(img.equipment[this.ID], 0, 0)
+        ctx.drawImage(this.canvas, pos[0], pos[1])
+    }
 }
 
 class Item extends InventoryThing {
@@ -59,5 +79,11 @@ class Item extends InventoryThing {
         let dataD = JSON.parse(JSON.stringify(dataItemD[ID]))
         this.ID = ID
         super.setData(data, dataD)
+    }
+
+    render(ctx, pos) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.drawImage(img.item[this.ID], 0, 0)
+        ctx.drawImage(this.canvas, pos[0], pos[1])
     }
 }
