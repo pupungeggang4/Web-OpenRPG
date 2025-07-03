@@ -88,8 +88,9 @@ class SceneGame {
                     } else if (pointInsideRectUI(pos, UI.info.tabMap)) {
                         game.infoTabPlayer = 'map'
                     }
-
-                    if (game.infoTabPlayer === 'deck') {
+                    if (game.infoTabPlayer === 'profile') {
+                        SceneGame.handleClickInfoProfile(game, pos)
+                    } else if (game.infoTabPlayer === 'deck') {
                         SceneGame.handleClickInfoDeck(game, pos)
                     }
                 }
@@ -103,6 +104,31 @@ class SceneGame {
                     game.saveAndExit()
                 }
             }
+        }
+    }
+
+    static handleClickInfoProfile(game, pos) {
+        let player = game.player
+
+        if (pointInsideRectUI(pos, UI.info.weapon)) {
+            game.infoProfileIndex = -1
+        }
+
+        for (let i = 0; i < 8; i++) {
+            let rect = [UI.info.equipmentStart[0] + UI.info.equipmentRect[0] * i, UI.info.equipmentStart[1] + UI.info.equipmentRect[1] * i, UI.info.equipmentRect[2], UI.info.equipmentRect[3]]
+            if (pointInsideRectUI(pos, rect)) {
+                game.infoProfileIndex = i
+                break
+            }
+            rect = [UI.info.itemStart[0] + UI.info.itemRect[0] * i, UI.info.itemStart[1] + UI.info.itemRect[1] * i, UI.info.itemRect[2], UI.info.itemRect[3]]
+            if (pointInsideRectUI(pos, rect)) {
+                game.infoProfileIndex = i + 8
+                break
+            }
+        }
+
+        for (let i = 0; i < 8; i++) {
+
         }
     }
 

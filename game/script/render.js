@@ -29,6 +29,7 @@ class Render {
 
         if (game.infoTabPlayer === 'profile') {
             Render.strokeRectUI(ctx, UI.info.portrait)
+            ctx.drawImage(img.player, UI.info.portrait[0], UI.info.portrait[1], UI.info.portrait[2], UI.info.portrait[3])
             Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
             Render.fillTextUI(ctx, `Exp.${player.playerExp}/${player.playerExpMax}`, UI.info.textExp)
             Render.fillTextUI(ctx, `Lv.${player.playerLevel}`, UI.info.textLevel)
@@ -36,13 +37,30 @@ class Render {
 
             Render.strokeRectUI(ctx, UI.info.descriptionRect)
             Render.fillTextUI(ctx, 'Weapon', UI.info.textWeapon)
+            ctx.font = '16px neodgm'
             if (player.weapon.ID != 0) {
                 player.weapon.render(ctx, UI.info.weapon)
+                if (game.infoProfileIndex === -1) {
+                    Render.fillTextUI(ctx, `${player.weapon.name}`, UI.info.descriptionTextName)
+                    Render.renderTextbox(ctx, player.weapon.description, UI.info.descriptionTextStart, UI.info.descriptionTextInterval)
+                }
             }
+            if (game.infoProfileIndex >= 0 && game.infoProfileIndex < 8) {
+                if (game.infoProfileIndex < player.equipment.length) {
+                    Render.fillTextUI(ctx, `${player.equipment[game.infoProfileIndex].name}`, UI.info.descriptionTextName)
+                    Render.renderTextbox(ctx, player.equipment[game.infoProfileIndex].description, UI.info.descriptionTextStart, UI.info.descriptionTextInterval)
+                }
+            } else if (game.infoProfileIndex >= 8) {
+                if (game.infoProfileIndex - 8 < player.item.length) {
+                    Render.fillTextUI(ctx, `${player.item[game.infoProfileIndex - 8].name}`, UI.info.descriptionTextName)
+                    Render.renderTextbox(ctx, player.item[game.infoProfileIndex - 8].description, UI.info.descriptionTextStart, UI.info.descriptionTextInterval)
+                }
+            }
+            ctx.font = '32px neodgm'
             Render.strokeRectUI(ctx, UI.info.weapon)
             Render.fillTextUI(ctx, 'Equipment', UI.info.textEquipment)
             for (let i = 0; i < 8; i++) {
-                let rect = [UI.info.equipmentStart[0] + UI.info.equipmentRect[2] * i, UI.info.equipmentStart[1], UI.info.equipmentRect[0], UI.info.equipmentRect[1]]
+                let rect = [UI.info.equipmentStart[0] + UI.info.equipmentRect[0] * i, UI.info.equipmentStart[1], UI.info.equipmentRect[2], UI.info.equipmentRect[3]]
                 if (i < player.equipment.length) {
                     player.equipment[i].render(ctx, rect)
                 }
@@ -50,7 +68,7 @@ class Render {
             }
             Render.fillTextUI(ctx, 'Item', UI.info.textItem)
             for (let i = 0; i < 8; i++) {
-                let rect = [UI.info.itemStart[0] + UI.info.itemRect[2] * i, UI.info.itemStart[1], UI.info.itemRect[0], UI.info.itemRect[1]]
+                let rect = [UI.info.itemStart[0] + UI.info.itemRect[0] * i, UI.info.itemStart[1], UI.info.itemRect[2], UI.info.itemRect[3]]
                 if (i < player.item.length) {
                     player.item[i].render(ctx, rect)
                 }

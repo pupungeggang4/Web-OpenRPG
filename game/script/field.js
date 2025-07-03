@@ -57,8 +57,9 @@ class PlayerField {
 class Field {
     constructor() {
         this.villageArea = [[-320, -320, 640, 640]]
+        this.monsterSpawn = [[0, -640]]
         this.player = new PlayerField()
-        this.thingList = [new FieldEnemy()]
+        this.thingList = []
         this.camera = new Rect2(0, 0, 1280, 720)
         this.canvas = document.createElement('canvas')
         this.canvas.width = 1280
@@ -94,20 +95,33 @@ class Field {
 
 class FieldThing {
     constructor() {
-
-    }
-}
-
-class FieldEnemy extends FieldThing {
-    constructor() {
-        super()
-        this.type = 'enemy'
-        this.rect = new Rect2(0, 0, 80, 80)
         this.canvas = document.createElement('canvas')
         this.canvas.width = this.rect.size.x
         this.canvas.height = this.rect.size.y
         this.ctx = this.canvas.getContext('2d')
         this.ctx.lineWidth = 2
+    }
+}
+
+class FieldMonster extends FieldThing {
+    constructor() {
+        super()
+        this.type = 'monster'
+        this.rect = new Rect2(0, 0, 80, 80)
+    }
+
+    render(ctx, camera) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.strokeRect(1, 1, 78, 78)
+        Render.renderImageRect(ctx, this.canvas, this.rect, camera)
+    }
+}
+
+class FieldResource extends FieldThing {
+    constructor() {
+        super()
+        this.tupe = 'resource'
+        this.rect = new Rect2(0, 0, 80, 80)
     }
 
     render(ctx, camera) {

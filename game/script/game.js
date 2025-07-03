@@ -31,6 +31,7 @@ class Game {
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')
+        this.ctx.imageSmoothingEnabled = false
         window.addEventListener('gamepadconnected', (event) => this.gamepadConnect(event), false)
         window.addEventListener('keydown', (event) => this.keyDown(event), false)
         window.addEventListener('keyup', (event) => this.keyUp(event), false)

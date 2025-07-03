@@ -21,6 +21,10 @@ let img = {
         1: new Image(), 2: new Image()
     },
 
+    inventory: {
+        1: new Image(),
+    },
+
     weapon: {
         1: new Image(),
     },
@@ -33,6 +37,11 @@ let img = {
         1: new Image(),
     },
 
+    field: {
+        monster: new Image(),
+    },
+
+    player: new Image(),
     map: new Image(),
     selectFrame: new Image(),
 }
@@ -59,12 +68,16 @@ function imageLoad() {
     img.deck[6].src = 'image/deck/deckdark.png'
     img.deck[7].src = 'image/deck/deckspecial.png'
 
+    img.inventory[1].src = 'image/inventory/inventoryitem001.png'
     img.card[1].src = 'image/card/card001.png'
     img.card[2].src = 'image/card/card002.png'
     img.weapon[1].src = 'image/weapon/weapon001.png'
     img.equipment[1].src = 'image/equipment/equipment001.png'
     img.item[1].src = 'image/item/item001.png'
 
+    img.field.monster.src = 'image/field/monster.png'
+
+    img.player.src = 'image/player.png'
     img.map.src = 'image/map.png'
     img.selectFrame.src = 'image/selectframe80.png'
 }
