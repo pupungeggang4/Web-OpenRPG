@@ -33,6 +33,8 @@ class Player {
         let item = new Item()
         item.setData(1)
         this.item.push(item)
+
+        game.field.spawnMonster()
     }
 
     adventureEnd(game) {

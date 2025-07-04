@@ -56,15 +56,26 @@ class PlayerField {
 
 class Field {
     constructor() {
-        this.villageArea = [[-320, -320, 640, 640]]
-        this.monsterSpawn = [[0, -640]]
+        this.villageArea = JSON.parse(JSON.stringify(dataWorld.village))
+        this.monsterSpawn = JSON.parse(JSON.stringify(dataWorld.monsterSpawn))
         this.player = new PlayerField()
         this.thingList = []
+        this.monsterList = []
         this.camera = new Rect2(0, 0, 1280, 720)
         this.canvas = document.createElement('canvas')
         this.canvas.width = 1280
         this.canvas.height = 720
         this.ctx = this.canvas.getContext('2d')
+    }
+
+    spawnMonster(game) {
+        this.monsterList = []
+        for (let i = 0; i < this.monsterSpawn.length; i++) {
+            let m = new FieldMonster()
+            m.rect.position.x = this.monsterSpawn[i][0]
+            m.rect.position.y = this.monsterSpawn[i][1]
+            this.monsterList.push(m)
+        }
     }
 
     handleTick(game) {
@@ -78,6 +89,11 @@ class Field {
         for (let i = 0; i < this.thingList.length; i++) {
             if (this.thingList[i].rect.position.insideRect(this.camera)) {
                 this.thingList[i].render(this.ctx, this.camera)
+            }
+        }
+        for (let i = 0; i < this.monsterList.length; i++) {
+            if (this.monsterList[i].rect.position.insideRect(this.camera)) {
+                this.monsterList[i].render(this.ctx, this.camera)
             }
         }
         this.player.render(this.ctx, this.camera)
@@ -96,6 +112,7 @@ class Field {
 class FieldThing {
     constructor() {
         this.canvas = document.createElement('canvas')
+        this.rect = new Rect2(0, 0, 80, 80)
         this.canvas.width = this.rect.size.x
         this.canvas.height = this.rect.size.y
         this.ctx = this.canvas.getContext('2d')
@@ -107,7 +124,6 @@ class FieldMonster extends FieldThing {
     constructor() {
         super()
         this.type = 'monster'
-        this.rect = new Rect2(0, 0, 80, 80)
     }
 
     render(ctx, camera) {
@@ -121,7 +137,6 @@ class FieldResource extends FieldThing {
     constructor() {
         super()
         this.tupe = 'resource'
-        this.rect = new Rect2(0, 0, 80, 80)
     }
 
     render(ctx, camera) {

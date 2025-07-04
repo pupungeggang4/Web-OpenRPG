@@ -80,6 +80,8 @@ class Game {
             SceneTitle.loop(this)
         } else if (this.scene === 'game') {
             SceneGame.loop(this)
+        } else if (this.scene === 'battle') {
+            SceneBattle.loop(this)
         }
 
         this.gameLoop = requestAnimationFrame(() => this.loop())
@@ -107,6 +109,8 @@ class Game {
             SceneTitle.keyDown(game, key)
         } else if (this.scene === 'game') {
             SceneGame.keyDown(game, key)
+        } else if (this.scene === 'battle') {
+            SceneBattle.keyDown(game, key)
         }
     }
 
@@ -121,6 +125,8 @@ class Game {
             SceneTitle.keyUp(game, key)
         } else if (this.scene === 'game') {
             SceneGame.keyUp(game, key)
+        } else if (this.scene === 'battle') {
+            SceneBattle.keyUp(game, key)
         }
     }
 
@@ -136,6 +142,8 @@ class Game {
             SceneTitle.mouseUp(game, pos, button)
         } else if (this.scene === 'game') {
             SceneGame.mouseUp(game, pos, button)
+        } else if (this.scene === 'battle') {
+            SceneBattle.mouseUp(game, pos, butto)
         }
     }
 }

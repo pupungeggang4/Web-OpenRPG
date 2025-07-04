@@ -74,6 +74,17 @@ class Render {
                 }
                 Render.strokeRectUI(ctx, rect)
             }
+            if (game.infoProfileIndex === -1) {
+                Render.drawImageUI(ctx, img.selectFrame80, UI.info.weapon)
+            } else if (game.infoProfileIndex >= 0 && game.infoProfileIndex < 8) {
+                let i = game.infoProfileIndex
+                let pos = [UI.info.equipmentStart[0] + UI.info.equipmentRect[0] * i, UI.info.equipmentStart[1] + UI.info.equipmentRect[1] * i]
+                Render.drawImageUI(ctx, img.selectFrame80, pos)
+            } else {
+                let i = game.infoProfileIndex - 8
+                let pos = [UI.info.itemStart[0] + UI.info.itemRect[0] * i, UI.info.itemStart[1] + UI.info.itemRect[1] * i]
+                Render.drawImageUI(ctx, img.selectFrame80, pos)
+            }
         } else if (game.infoTabPlayer === 'inventory') {
             Render.fillTextUI(ctx, 'Inventory', UI.info.textInventory)
             Render.strokeRectUI(ctx, UI.info.iDescriptionRect)

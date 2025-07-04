@@ -28,3 +28,9 @@ const dataEquipment = {
 const dataItem = {
     1: {'ID': 1, 'name': 'heal potion', 'element': 'normal', 'rarity': 'basic', 'effect': []}
 }
+
+const dataWorld = {
+    village: [[-320, -320, 640, 640]],
+    monsterSpawn: [[160, -640]],
+    thing: [],
+}

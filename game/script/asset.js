@@ -43,7 +43,7 @@ let img = {
 
     player: new Image(),
     map: new Image(),
-    selectFrame: new Image(),
+    selectFrame80: new Image(),
 }
 
 function imageLoad() {
@@ -79,5 +79,5 @@ function imageLoad() {
 
     img.player.src = 'image/player.png'
     img.map.src = 'image/map.png'
-    img.selectFrame.src = 'image/selectframe80.png'
+    img.selectFrame80.src = 'image/selectframe80.png'
 }
