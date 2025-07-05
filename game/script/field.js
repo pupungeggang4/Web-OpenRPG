@@ -14,7 +14,7 @@ class PlayerField {
         this.adventureHandle(game)
     }
 
-    move(game) {
+    move(game, field) {
         if (game.keyPressed['left'] === true) {
             this.rect.position.x -= this.speed * game.delta / 1000
         }
@@ -26,6 +26,10 @@ class PlayerField {
         }
         if (game.keyPressed['down'] === true) {
             this.rect.position.y += this.speed * game.delta / 1000
+        }
+
+        for (let i = 0; i < field.wallList.length; i++) {
+            
         }
     }
 
@@ -58,7 +62,9 @@ class Field {
     constructor() {
         this.villageArea = JSON.parse(JSON.stringify(dataWorld.village))
         this.monsterSpawn = JSON.parse(JSON.stringify(dataWorld.monsterSpawn))
+        this.wall = JSON.parse(JSON.stringify(dataWorld.wall))
         this.player = new PlayerField()
+        this.wallList = []
         this.thingList = []
         this.monsterList = []
         this.camera = new Rect2(0, 0, 1280, 720)
@@ -66,9 +72,15 @@ class Field {
         this.canvas.width = 1280
         this.canvas.height = 720
         this.ctx = this.canvas.getContext('2d')
+
+        for (let i = 0; i < dataWorld.wall.length; i++) {
+            let w = dataWorld.wall[i]
+            let wall = new FieldWall(w[0], w[1], w[2], w[3])
+            this.wallList.push(wall)
+        }
     }
 
-    spawnMonster(game) {
+    spawnMonster() {
         this.monsterList = []
         for (let i = 0; i < this.monsterSpawn.length; i++) {
             let m = new FieldMonster()
@@ -79,7 +91,7 @@ class Field {
     }
 
     handleTick(game) {
-        this.player.handleTick(game)
+        this.player.handleTick(game, this)
         this.camera.position.x = this.player.rect.position.x
         this.camera.position.y = this.player.rect.position.y
     }
@@ -94,6 +106,11 @@ class Field {
         for (let i = 0; i < this.monsterList.length; i++) {
             if (this.monsterList[i].rect.position.insideRect(this.camera)) {
                 this.monsterList[i].render(this.ctx, this.camera)
+            }
+        }
+        for (let i = 0; i < this.wallList.length; i++) {
+            if (this.wallList[i].rect.position.insideRect(this.camera)) {
+                this.wallList[i].render(this.ctx, this.camera)
             }
         }
         this.player.render(this.ctx, this.camera)
@@ -120,6 +137,25 @@ class FieldThing {
     }
 }
 
+class FieldWall extends FieldThing {
+    constructor(x, y, w, h) {
+        super()
+        this.rect.position.x = x
+        this.rect.position.y = y
+        this.rect.size.x = w
+        this.rect.size.y = h
+        this.canvas.width = this.rect.size.x
+        this.canvas.height = this.rect.size.y
+        this.ctx.lineWidth = 2
+    }
+
+    render(ctx, camera) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.strokeRect(1, 1, this.rect.size.x - 2, this.rect.size.y - 2)
+        Render.renderImageRect(ctx, this.canvas, this.rect, camera)
+    }
+}
+
 class FieldMonster extends FieldThing {
     constructor() {
         super()
@@ -128,7 +164,7 @@ class FieldMonster extends FieldThing {
 
     render(ctx, camera) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.strokeRect(1, 1, 78, 78)
+        this.ctx.drawImage(img.field.monster, 0, 0)
         Render.renderImageRect(ctx, this.canvas, this.rect, camera)
     }
 }
