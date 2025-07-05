@@ -9,27 +9,43 @@ class PlayerField {
         this.ctx.lineWidth = 2
     }
 
-    handleTick(game) {
-        this.move(game)
+    handleTick(game, field) {
+        this.move(game, field)
         this.adventureHandle(game)
     }
 
     move(game, field) {
         if (game.keyPressed['left'] === true) {
             this.rect.position.x -= this.speed * game.delta / 1000
+            for (let i = 0; i < field.wallList.length; i++) {
+                if (field.wallList[i].rect.position.insideRect(field.camera)) {
+                    this.rect.position.x -= this.rect.findOverlapH(field.wallList[i].rect)
+                }
+            }
         }
         if (game.keyPressed['right'] === true) {
             this.rect.position.x += this.speed * game.delta / 1000
+            for (let i = 0; i < field.wallList.length; i++) {
+                if (field.wallList[i].rect.position.insideRect(field.camera)) {
+                    this.rect.position.x -= this.rect.findOverlapH(field.wallList[i].rect)
+                }
+            }
         }
         if (game.keyPressed['up'] === true) {
             this.rect.position.y -= this.speed * game.delta / 1000
+            for (let i = 0; i < field.wallList.length; i++) {
+                if (field.wallList[i].rect.position.insideRect(field.camera)) {
+                    this.rect.position.y -= this.rect.findOverlapV(field.wallList[i].rect)
+                }
+            }
         }
         if (game.keyPressed['down'] === true) {
             this.rect.position.y += this.speed * game.delta / 1000
-        }
-
-        for (let i = 0; i < field.wallList.length; i++) {
-            
+            for (let i = 0; i < field.wallList.length; i++) {
+                if (field.wallList[i].rect.position.insideRect(field.camera)) {
+                    this.rect.position.y -= this.rect.findOverlapV(field.wallList[i].rect)
+                }
+            }
         }
     }
 

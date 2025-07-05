@@ -23,8 +23,26 @@ class Rect2 {
         this.size = new Vector2(w, h)
     }
 
-    overlap(rect) {
-        return !(this.position.x < rect.position.x - rect.size.x / 2 - this.size.x / 2 || this.position.x > rect.position.x + rect.size.x / 2 + this.size.x / 2 || this.position.y < rect.position.y - rect.size.y / 2 - this.size.y / 2 || this.position.y > rect.position.y + rect.size.y / 2 + this.size.y / 2)
+    findOverlapH(rect) {
+        if (this.position.y > rect.position.y - this.size.y / 2 - rect.size.y / 2 && this.position.y < rect.position.y + this.size.y / 2 + rect.size.y / 2) {
+            if (this.position.x > rect.position.x + rect.size.x / 2 - this.size.x / 2 && this.position.x < rect.position.x + rect.size.x / 2 + this.size.x / 2) {
+                return this.position.x - rect.position.x - (this.size.x / 2 + rect.size.x / 2)
+            } else if (this.position.x > rect.position.x - rect.size.x / 2 - this.size.x / 2 && this.position.x < rect.position.x - rect.size.x / 2 + this.size.x / 2) {
+                return this.size.x / 2 + rect.size.x / 2 - (rect.position.x - this.position.x)
+            }
+        }
+        return 0
+    }
+
+    findOverlapV(rect) {
+        if (this.position.x > rect.position.x - this.size.x / 2 - rect.size.x / 2 && this.position.x < rect.position.x + this.size.x / 2 + rect.size.x / 2) {
+            if (this.position.y > rect.position.y + rect.size.y / 2 - this.size.y / 2 && this.position.y < rect.position.y + rect.size.y / 2 + this.size.y / 2) {
+                return this.position.y - rect.position.y - (this.size.y / 2 + rect.size.y / 2)
+            } else if (this.position.y > rect.position.y - rect.size.y / 2 - this.size.y / 2 && this.position.y < rect.position.y - rect.size.y / 2 + this.size.y / 2) {
+                return this.size.y / 2 + rect.size.y / 2 - (rect.position.y - this.position.y)
+            }
+        }
+        return 0
     }
 
     clone() {
